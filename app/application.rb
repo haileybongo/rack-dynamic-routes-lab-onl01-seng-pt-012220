@@ -9,7 +9,7 @@ class Application
     req = Rack::Request.new(env)
     
     if req.path.match(/items/)
-      req_item = req.params["items"]
+      req_item = req.params["item name"]
       binding.pry 
       
       if Item.all.select {|item| item.name == req_item}
