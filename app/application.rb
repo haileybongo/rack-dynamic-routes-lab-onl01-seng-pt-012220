@@ -12,7 +12,7 @@ class Application
       req_item = req.params["items"]
       binding.pry 
       
-      if Item.all.select(|item| item.name == req_item)
+      if Item.all.select (|item| item.name == req_item)
         item = Item.all.select(|item| item.name == req_item)
         resp.write "#{item.price}\n"
       else 
