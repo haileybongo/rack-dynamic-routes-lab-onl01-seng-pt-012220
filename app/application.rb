@@ -2,7 +2,7 @@ require 'pry'
 
 class Application
   
-  
+  @@items = Item.all 
 
   def call(env)
     resp = Rack::Response.new
@@ -12,7 +12,7 @@ class Application
       req_item = req.params["items"]
       binding.pry 
       
-      if Item.all.select {|item| item.name == req_item}
+      if @@items.include?
         item = Item.all.select{|item| item.name == req_item}
         resp.write "#{item.price}\n"
       else 
@@ -27,3 +27,5 @@ class Application
   end
 
 end
+
+#Item.all.select {|item| item.name == req_item}
